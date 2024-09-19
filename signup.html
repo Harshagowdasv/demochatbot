@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles2.css">
+    <script src="signup.js" defer></script>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html" class="btn">Home</a>
+    </div>
+
+    <div class="container">
+        <div class="form-box signup active">
+            <h1>Sign Up</h1>
+            <form id="signup-form" action="/signup" method="post">
+                <div class="input-group">
+                    <label for="signup-username">Username</label>
+                    <input type="text" id="signup-username" name="username" placeholder="Create a username" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" name="password" placeholder="Create a password" required>
+                </div>
+                <!-- Prevent default form action and handle submission with JavaScript -->
+                <button type="submit" class="btn" id="submit-btn">Sign Up</button>
+                <p>Already have an account? <a href="loginpage.html">Log in here</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Handling form submission with JavaScript
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent the default form submission
+            
+            // Perform the form submission via JavaScript
+            const formData = new FormData(this);
+            
+            fetch('/signup', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Redirect to chatbot.html after successful signup
+                    
+                } else {
+                    window.location.href = 'chatbot.html';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>

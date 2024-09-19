@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles2.css">
+    <script src="login.js" defer></script>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html" class="btn">Home</a>
+    </div>
+
+    <div class="container">
+        <div class="form-box">
+            <h1>Login</h1>
+            <form id="login-form" action="/login" method="post">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <!-- Intercept form submission with JavaScript -->
+                <button type="submit" class="btn" id="login-btn">Login</button>
+                <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Handling login form submission with JavaScript
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent the default form submission
+            
+            // Perform form submission via JavaScript
+            const formData = new FormData(this);
+            
+            fetch('/login', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Redirect to homepage after successful login
+                    window.location.href = 'index.html';
+                } else {
+                  window.location.href = 'chatbot.html';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>

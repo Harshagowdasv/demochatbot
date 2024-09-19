@@ -1,0 +1,52 @@
+
+
+.navbar {
+    position: absolute;
+    left: 10%;
+    top: 20px;
+    width: 10%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px;
+}
+
+.navbar .btn {
+    background: transparent;
+    border: 2px solid white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.navbar .btn:hover {
+    background: white;
+    color: #6a11cb;
+}
+
+.title {
+    margin-top: 100px;
+}
+
+.title h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.title h2 {
+    font-size: 24px;
+    font-weight: 400;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    margin-bottom: 50px;
+}
+
+.home,
+.login {
+    display: none;
+}
